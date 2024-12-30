@@ -13,7 +13,7 @@ exports.handler = async (event) => {
       headers: {
         Location: longUrl, // Cílová URL
         "Cache-Control": "no-store", // Zajistí, že prohlížeč nebude uchovávat staré hodnoty
-      },a
+      },
       body: null, // Tělo není potřeba pro přesměrování
     };
   }
