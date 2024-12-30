@@ -1,6 +1,8 @@
 const urls = {
   "ex1": "https://www.example.com",
   "ex2": "https://www.example.org",
+  "ex3": "https://www.example.com/?pokus",
+  "ex4": "https://www.example.com"
 };
 
 exports.handler = async (event) => {
