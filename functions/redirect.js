@@ -26,13 +26,15 @@ async function connectToDatabase() {
 }
 
 exports.handler = async (event) => {
-  const { pathParameters } = event;
+  let shortId;
 
-  if (!pathParameters || !pathParameters.shortId) {
+  // Extrahujeme shortId z event.path
+  const match = event.path.match(/\/([^/]+)$/); // Hledá poslední část URL
+  if (match && match[1]) {
+    shortId = match[1];
+  } else {
     return { statusCode: 400, body: 'Missing shortId parameter' };
   }
-
-  const { shortId } = pathParameters;
 
   try {
     await connectToDatabase();
