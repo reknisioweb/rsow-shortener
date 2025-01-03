@@ -26,7 +26,13 @@ async function connectToDatabase() {
 }
 
 exports.handler = async (event) => {
-  const { shortId } = event.pathParameters;
+  const { pathParameters } = event;
+
+  if (!pathParameters || !pathParameters.shortId) {
+    return { statusCode: 400, body: 'Missing shortId parameter' };
+  }
+
+  const { shortId } = pathParameters;
 
   try {
     await connectToDatabase();
@@ -46,4 +52,5 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: 'Internal Server Error' };
   }
 };
+
 
