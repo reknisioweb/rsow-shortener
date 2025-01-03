@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@netlify/functions": "^3.0.0",
+    "dotenv": "^16.4.7",
     "faunadb": "^4.8.2"
   }
 }
