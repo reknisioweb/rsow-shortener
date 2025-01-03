@@ -3,7 +3,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const mongoose = require('mongoose');
+const shortid = require('shortid');
 
+const rsowUri = process.env.RSOW_URI;
 const mongoUri = process.env.MONGO_URI;
 let connection = null;
 
@@ -23,24 +25,29 @@ async function connectToDatabase() {
 }
 
 exports.handler = async (event) => {
-  const { shortId } = event.pathParameters;
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  const { originalUrl } = JSON.parse(event.body);
+
+  if (!originalUrl) {
+    return { statusCode: 400, body: 'Missing originalUrl parameter' };
+  }
 
   try {
     await connectToDatabase();
 
-    const url = await Url.findOne({ shortId });
-
-    if (!url) {
-      return { statusCode: 404, body: 'URL not found' };
-    }
+    const shortId = shortid.generate();
+    const url = new Url({ shortId, originalUrl });
+    await url.save();
 
     return {
-      statusCode: 301,
-      headers: { Location: url.originalUrl },
+      statusCode: 200,
+      body: JSON.stringify({ shortUrl: `${rsowUri}${shortId}` }),
     };
   } catch (err) {
     console.error(err);
     return { statusCode: 500, body: 'Internal Server Error' };
   }
 };
-
