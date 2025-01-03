@@ -1,28 +1,30 @@
-const urls = {
-  "ex1": "https://www.example.com",
-  "ex2": "https://www.example.org",
-  "ex3": "https://www.example.com/?pokus",
-  "ex4": "https://www.example.com",
-};
+const faunadb = require("faunadb");
+const q = faunadb.query;
+
+const client = new faunadb.Client({ secret: process.env.FAUNA_SERVER });
 
 exports.handler = async (event) => {
-  // Extrahujeme část cesty za lomítkem
-  const path = event.path.replace("/.netlify/functions/shorten", "").replace("/", "");
-  const longUrl = urls[path];
+  const shortCode = event.path.replace("/", ""); // Extrahujeme zkratku z cesty
 
-  if (longUrl) {
+  try {
+    // Najdeme záznam podle short_code
+    const result = await client.query(
+      q.Get(q.Match(q.Index("short_codes"), shortCode))
+    );
+
     return {
       statusCode: 301,
       headers: {
-        Location: longUrl, // Přesměrování na cílovou URL
-        "Cache-Control": "no-store", // Zabrání cacheování
+        Location: result.data.long_url, // Přesměrujeme na long_url
       },
-      body: null, // Tělo odpovědi není potřeba
+      body: null,
+    };
+  } catch (error) {
+    console.error("Error:", error);
+
+    return {
+      statusCode: 404,
+      body: "URL not found",
     };
   }
-
-  return {
-    statusCode: 404,
-    body: "URL not found",
-  };
 };

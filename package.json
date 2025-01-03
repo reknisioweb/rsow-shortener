@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@netlify/functions": "^3.0.0"
+    "@netlify/functions": "^3.0.0",
+    "faunadb": "^4.8.2"
   }
 }
