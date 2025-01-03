@@ -41,7 +41,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 404,
-      body: "URL not found (zase)",
+      body: "URL not found",
     };
   } catch (error) {
     console.error("Error:", error);
