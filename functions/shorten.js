@@ -22,6 +22,7 @@ async function connectToDatabase() {
     connection = await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      dbName: 'rsow-shortener',
     });
   }
 }
