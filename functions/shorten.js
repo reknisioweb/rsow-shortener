@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+console.log('FAUNA_SERVER:', process.env.FAUNA_SERVER);
+
 const axios = require('axios');
 
 exports.handler = async (event) => {
