@@ -11,7 +11,10 @@ const urlSchema = new mongoose.Schema({
   shortId: { type: String, required: true, unique: true },
   originalUrl: { type: String, required: true },
 });
-const Url = mongoose.model('Url', urlSchema);
+
+// Pokud ještě neexistuje model.Url, vytvoříme ho.
+const Url = mongoose.models.Url || mongoose.model('Url', urlSchema);
+
 
 async function connectToDatabase() {
   if (!connection) {
