@@ -3,6 +3,24 @@ functions = "./functions"
 publish = "./public"
 
 [[redirects]]
+  from = "https://rsow.netlify.app/"
+  to = "https://reknisioweb.cz/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://rsow.cz/"
+  to = "https://reknisioweb.cz/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.rsow.cz/"
+  to = "https://reknisioweb.cz/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/:shortId"
   to = "/.netlify/functions/redirect/:shortId"
   status = 200
