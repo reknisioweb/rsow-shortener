@@ -30,10 +30,10 @@ publish = "./public"
 # Redirect /api/* to /.netlify/functions/*
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/api/:splat"
   status = 200
 
-# Redirect /api/nazev-funkce to /api/v1/nazev-funkce
+# Redirect /api/function-name to /api/v1/function-name
 [[redirects]]
   from = "/api/:functionName"
   to = "/api/v1/:functionName"
