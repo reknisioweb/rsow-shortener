@@ -2,6 +2,7 @@
 functions = "./functions"
 publish = "./public"
 
+# Redirects to reknisioweb.cz
 [[redirects]]
   from = "https://rsow.netlify.app"
   to = "https://reknisioweb.cz/"
@@ -20,7 +21,21 @@ publish = "./public"
   status = 301
   force = true
 
+# Redirect for short URLs
 [[redirects]]
   from = "/:shortId"
   to = "/.netlify/functions/redirect/:shortId"
   status = 200
+
+# Redirect /api/* to /.netlify/functions/*
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Redirect /api/nazev-funkce to /api/v1/nazev-funkce
+[[redirects]]
+  from = "/api/:functionName"
+  to = "/api/v1/:functionName"
+  status = 200
+  force = true
