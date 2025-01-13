@@ -27,15 +27,15 @@ publish = "./public"
   to = "/.netlify/functions/redirect/:shortId"
   status = 200
 
-# Redirect /api/* to /.netlify/functions/*
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
-
 # Redirect /api/function-name to /api/v1/function-name
 [[redirects]]
   from = "/api/:functionName"
   to = "/api/v1/:functionName"
   status = 200
   force = true
+
+# Redirect /api/* to /.netlify/functions/*
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
