@@ -1,5 +1,4 @@
 {
-	"siteId": "c6e0a7a5-aa24-45d0-8d0f-d5536e3e08e6",
 	"geolocation": {
 		"data": {
 			"city": "Prague",
@@ -16,6 +15,6 @@
 			"longitude": 14.3947,
 			"postalCode": "150 00"
 		},
-		"timestamp": 1736746656208
+		"timestamp": 1736747981567
 	}
 }
