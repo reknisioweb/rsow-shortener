@@ -59,7 +59,7 @@ exports.handler = async (event) => {
   }
 
   // Check if shortId is 2 or 3 digits
-  if (/^\d{2,3}/?$/.test(shortId)) {
+  if (/^\d{2,3}\/?$/.test(shortId)) {
     return {
       statusCode: 301,
       headers: { Location: `https://reknisioweb.cz/p/${shortId}` },
