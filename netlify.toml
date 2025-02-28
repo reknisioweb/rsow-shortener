@@ -30,7 +30,6 @@ publish = "./public"
   query = { "*": ":splat" }
   conditions = { "pattern": "^\\d+$" }
 
-
 # Redirect for short URLs
 [[redirects]]
   from = "/:shortId"
