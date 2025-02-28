@@ -50,12 +50,20 @@ async function connectToDatabase() {
 exports.handler = async (event) => {
   let shortId;
 
-  // Extrahujeme shortId z event.path
-  const match = event.path.match(/\/([^/]+)$/); // Hledá poslední část URL
+  // Extract shortId from event.path
+  const match = event.path.match(/\/([^/]+)$/); // Matches the last part of the URL
   if (match && match[1]) {
     shortId = match[1];
   } else {
     return { statusCode: 400, body: 'Missing shortId parameter' };
+  }
+
+  // Check if shortId is 2 or 3 digits
+  if (/^\d{2,3}$/.test(shortId)) {
+    return {
+      statusCode: 301,
+      headers: { Location: `https://reknisioweb.cz/p/${shortId}` },
+    };
   }
 
   try {

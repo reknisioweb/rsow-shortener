@@ -21,15 +21,6 @@ publish = "./public"
   status = 301
   force = true
 
-# Redirect numeric paths to reknisioweb.cz/p/{:numbers}
-[[redirects]]
-  from = "/:numbers"
-  to = "https://www.reknisioweb.cz/p/:numbers"
-  status = 301
-  force = true
-  query = { "*": ":splat" }
-  conditions = { "pattern": "^\\d+$" }
-
 # Redirect for short URLs
 [[redirects]]
   from = "/:shortId"
