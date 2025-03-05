@@ -23,6 +23,11 @@ publish = "./public"
 
 # Redirect for short URLs
 [[redirects]]
+  from = "/solidni-webinar"
+  to = "https://form.simpleshop.cz/oPwjx/buy/"
+  status = 200
+
+[[redirects]]
   from = "/:shortId"
   to = "/.netlify/functions/redirect/:shortId"
   status = 200
