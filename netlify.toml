@@ -25,7 +25,7 @@ publish = "./public"
 [[redirects]]
   from = "/solidni-webinar"
   to = "https://form.simpleshop.cz/oPwjx/buy/"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "/:shortId"
