@@ -28,7 +28,7 @@ publish = "./public"
   status = 301
 
 [[redirects]]
-  from = "/kniha"
+  from = "/75tipu"
   to = "https://www.reknisioweb.cz/p/kniha"
   status = 301
 
