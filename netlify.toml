@@ -28,6 +28,11 @@ publish = "./public"
   status = 301
 
 [[redirects]]
+  from = "/kniha"
+  to = "https://www.reknisioweb.cz/p/kniha"
+  status = 301
+
+[[redirects]]
   from = "/:shortId"
   to = "/.netlify/functions/redirect/:shortId"
   status = 200
