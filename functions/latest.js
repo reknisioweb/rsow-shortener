@@ -1,7 +1,8 @@
-import fetch from 'node-fetch';
-import { parseStringPromise } from 'xml2js';
+// filepath: c:\Users\Martin\Documents\rsow-shortener\functions\latest.js
+const fetch = require('node-fetch');
+const { parseStringPromise } = require('xml2js');
 
-export async function handler(event, context) {
+exports.handler = async function(event, context) {
   try {
     const res = await fetch('https://www.reknisioweb.cz/feed?sectionId=126454');
     const xml = await res.text();
